@@ -130,7 +130,7 @@ Or just use it to master a hard topic. That's enough for me.
 ---
 
 <p align="center">
-  Built with caffeine and spite by <strong><a href="https://github.com/akshayaggarwal99">Akshay</a></strong>
+  Built with caffeine and a genuine love for learning by <strong><a href="https://github.com/akshayaggarwal99">Akshay</a></strong>
 </p>
 
 <p align="center">
