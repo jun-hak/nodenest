@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect } from 'react';
-import useFlowStore from '@/store/useFlowStore';
+import useFlowStore, { SessionData } from '@/store/useFlowStore';
 import { History, Plus, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Sidebar() {
-    const { sidebarOpen, recentSessions, loadSessions, loadSession, deleteSession, createNewSession, currentSessionId } = useFlowStore();
+    const { sidebarOpen, storedSessions, loadSessions, loadSession, deleteSession, createNewSession, currentSessionId } = useFlowStore();
 
     useEffect(() => {
         loadSessions();
@@ -40,32 +40,37 @@ export function Sidebar() {
                 <div>
                     <div className="px-2 mb-3 text-[11px] font-bold text-zinc-500 uppercase tracking-widest">Recent Sessions</div>
                     <div className="space-y-1">
-                        {recentSessions.length === 0 ? (
-                            <div className="px-3 py-2.5 text-sm text-zinc-500 italic">No saved sessions</div>
-                        ) : (
-                            recentSessions.map((session: any) => (
-                                <div
-                                    key={session.id}
-                                    onClick={() => loadSession(session.id)}
-                                    className={cn(
-                                        "group w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all text-left cursor-pointer",
-                                        currentSessionId === session.id
-                                            ? "bg-green-500/10 text-green-400"
-                                            : "text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200"
-                                    )}
-                                >
-                                    <History size={18} className="shrink-0" />
-                                    <span className="truncate flex-1">{session.title}</span>
-                                    <button
-                                        onClick={(e) => handleDelete(e, session.id)}
-                                        className="opacity-0 group-hover:opacity-100 p-1 hover:bg-red-500/20 hover:text-red-400 rounded transition-all"
-                                        title="Delete session"
-                                    >
-                                        <Trash2 size={14} />
-                                    </button>
-                                </div>
-                            ))
-                        )}
+                        <div className="space-y-1">
+                            {Object.keys(storedSessions).length === 0 ? (
+                                <div className="px-3 py-2.5 text-sm text-zinc-500 italic">No saved sessions</div>
+                            ) : (
+                                // Sort by most recently updated
+                                Object.values(storedSessions)
+                                    .sort((a: SessionData, b: SessionData) => b.updatedAt - a.updatedAt)
+                                    .map((session: SessionData) => (
+                                        <div
+                                            key={session.id}
+                                            onClick={() => loadSession(session.id)}
+                                            className={cn(
+                                                "group w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all text-left cursor-pointer",
+                                                currentSessionId === session.id
+                                                    ? "bg-green-500/10 text-green-400"
+                                                    : "text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200"
+                                            )}
+                                        >
+                                            <History size={18} className="shrink-0" />
+                                            <span className="truncate flex-1">{session.title}</span>
+                                            <button
+                                                onClick={(e) => handleDelete(e, session.id)}
+                                                className="opacity-0 group-hover:opacity-100 p-1 hover:bg-red-500/20 hover:text-red-400 rounded transition-all"
+                                                title="Delete session"
+                                            >
+                                                <Trash2 size={14} />
+                                            </button>
+                                        </div>
+                                    ))
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
