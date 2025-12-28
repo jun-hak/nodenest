@@ -36,7 +36,7 @@ export function Header() {
             </div>
 
             {/* Center Section: Search Bar */}
-            <div className="flex-1 max-w-2xl mx-6">
+            <div className="flex-1 max-w-2xl mx-2 md:mx-6">
                 <InputBar />
             </div>
 

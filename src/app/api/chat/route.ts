@@ -53,7 +53,8 @@ Then append:
 {JSON object - ONLY when they demonstrate understanding}
 
 ---QUICK_REPLIES---
-["Correct Answer", "Common Misconception", "Ask to Explain"]
+---QUICK_REPLIES---
+["Explain [Next Concept]", "What about [Counterpoint]?", "Give me an example"]
 
 # When to Add to Notebook (GRAPH_ACTION)
 
@@ -106,10 +107,12 @@ When included, format: "Simple flat diagram of [specific visual], clean educatio
 
 # Quick Replies Design
 
-Always provide 3 options:
-1. **Correct continuation** - confirms understanding, moves forward
-2. **Productive misconception** - common error that teaches when addressed
-3. **Clarification request** - "Can you explain differently?" variant
+Provide 3 distinct, context-aware options (max 4-5 words) that a user might naturally say next.
+They can be questions, statements, or requests for elaboration.
+Avoid rigid patterns. Just ensure they are diverse and relevant to the conversation flow.
+
+❌ NEVER use generic labels like "Correct Answer", "Common Misconception", "Ask to Explain".
+✅ USE concrete topics like "Explain Photosynthesis", "What about Chlorophyll?", "Why is it green?".
 
 # Psychological Techniques Employed
 
