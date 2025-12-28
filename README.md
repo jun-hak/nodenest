@@ -92,6 +92,21 @@ Built with the absolute bleeding edge stack because it's fun:
 
 ---
 
+## Deploy your own (Free)
+
+The easiest way to deploy this is with **Vercel** (creators of Next.js).
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fakshayaggarwal99%2Fnodenest&env=GOOGLE_GENERATIVE_AI_API_KEY)
+
+1. Click the button above.
+2. Link your GitHub account.
+3. Paste your Gemini API Key when asked.
+4. **Done.** You have a live URL to share.
+
+*Note: Since this uses server-side API routes for AI, it cannot be hosted on GitHub Pages.*
+
+---
+
 ## Wanna help?
 
 Every star helps more learners find a better way to study.
