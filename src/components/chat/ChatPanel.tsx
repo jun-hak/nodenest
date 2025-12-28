@@ -169,7 +169,7 @@ export function ChatPanel() {
 
     return (
         <div className={cn(
-            "bg-zinc-900 flex flex-col shrink-0 shadow-xl z-20 transition-all duration-300",
+            "bg-zinc-900 flex flex-col shrink-0 shadow-xl z-[60] transition-all duration-300",
             // Mobile: Full screen fixed overlay
             "fixed inset-0 w-full h-full md:relative md:inset-auto md:h-auto",
             // Desktop: Side panel with transition
