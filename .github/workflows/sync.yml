@@ -1,0 +1,23 @@
+name: Upstream Sync
+
+on:
+  schedule:
+    - cron:  '0 0 * * *' # 매일 자정에 실행
+  workflow_dispatch: # 수동으로도 실행 가능하게 설정
+
+jobs:
+  sync_latest_from_upstream:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v3
+        with:
+          ref: main # 내 레포의 브랜치명
+
+      - name: Sync upstream changes
+        uses: a2vu/upstream-sync@v2.0.1
+        with:
+          upstream_repo: https://github.com/akshayaggarwal99/nodenest.git
+          upstream_branch: main # 원본 레포의 브랜치명
+          target_branch: main   # 내 레포의 브랜치명
+          force: false # 내 작업물이 있다면 덮어쓰지 않도록 설정
